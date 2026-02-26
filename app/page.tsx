@@ -1,65 +1,117 @@
-import Image from "next/image";
+"use client";
+import Link from "next/link";
 
+import { motion } from "framer-motion";
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+    <main className="min-h-screen bg-black text-white">
+      {/* Top glow */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-24 left-1/2 h-72 w-[46rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute -bottom-40 right-0 h-72 w-[34rem] rounded-full bg-white/5 blur-3xl" />
+      </div>
+
+      <section className="relative mx-auto max-w-6xl px-6 py-20">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-zinc-300">
+          <span className="h-2 w-2 rounded-full bg-emerald-400/80" />
+          Booking: Music + Video + Artist Development
+        </div>
+
+        <motion.h1
+initial={{ opacity: 0, y: 40 }}
+animate={{ opacity: 1, y: 0 }}
+transition={{ duration: 0.8 }}
+className="text-5xl font-bold"
+>
+2Reel Music Entertainment
+</motion.h1>
+
+        <p className="mt-5 max-w-2xl text-lg text-zinc-300">
+          Hybrid powerhouse for{" "}
+          <span className="text-white">Music Production</span>,{" "}
+          <span className="text-white">Video Production</span>, and{" "}
+          <span className="text-white">Artist Development</span>.
+          Premium sound. Cinematic visuals. Built to feel expensive.
+        </p>
+
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link
+            href="/start"
+            className="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-zinc-200"
+          >
+            Start a Project
+          </Link>
+
+          <Link
+            href="/work"
+            className="rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            View Our Work
+          </Link>
+        </div>
+
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          <Bucket
+            title="Music Production"
+            desc="Production • Recording • Vocal editing • Mixing • Mastering"
+            href="/services#music"
+            cta="Book Production"
+          />
+          <Bucket
+            title="Video Production"
+            desc="Shoot • Edit • Color • Story • Performance visuals"
+            href="/services#video"
+            cta="Build Visuals"
+          />
+          <Bucket
+            title="Artist Development"
+            desc="Brand • Strategy • Rollouts • Label readiness"
+            href="/label"
+            cta="Label Inquiry"
+          />
+        </div>
+
+        <div className="mt-14 rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div className="text-sm font-semibold">Bookings</div>
+          <p className="mt-2 text-sm text-zinc-300">
+            Email:{" "}
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              className="underline hover:text-white"
+              href="mailto:2ReelMusicEnt.booking@gmail.com"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              2ReelMusicEnt.booking@gmail.com
+            </a>
+          </p>
+          <p className="mt-1 text-xs text-zinc-500">
+            Response time: typically within 24 hours.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
+    </main>
+  );
+}
+
+function Bucket({
+  title,
+  desc,
+  href,
+  cta,
+}: {
+  title: string;
+  desc: string;
+  href: string;
+  cta: string;
+}) {
+  return (
+    <div className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:bg-white/10">
+      <div className="text-lg font-semibold">{title}</div>
+      <p className="mt-2 text-sm text-zinc-400">{desc}</p>
+      <Link
+        href={href}
+        className="mt-5 inline-flex rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black transition group-hover:bg-zinc-200"
+      >
+        {cta}
+      </Link>
     </div>
   );
 }
