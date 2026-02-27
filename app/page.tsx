@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function Home() {  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setLoaded(true), 50);
+    const t = setTimeout(() => setLoaded(true), 1200);
     return () => clearTimeout(t);
   }, []);
   return (
