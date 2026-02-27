@@ -1,10 +1,22 @@
 "use client";
 import Link from "next/link";
-
 import { motion } from "framer-motion";
-export default function Home() {
+import { useEffect, useState } from "react";
+export default function Home() {  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setLoaded(true), 50);
+    return () => clearTimeout(t);
+  }, []);
   return (
     <main className="min-h-screen bg-black text-white">
+      {!loaded && (
+  <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
+    <div className="text-white/70 text-sm tracking-wide">
+      Loading 2Reel…
+    </div>
+  </div>
+)}
       {/* Top glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-24 left-1/2 h-72 w-[46rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
@@ -18,9 +30,9 @@ export default function Home() {
         </div>
 
         <motion.h1
-initial={{ opacity: 0, y: 40 }}
-animate={{ opacity: 1, y: 0 }}
-transition={{ duration: 0.8 }}
+  initial={{ opacity: 0, y: 40 }}
+  animate={loaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+  transition={{ duration: 0.8 }}
 className="text-5xl font-bold"
 >
 2Reel Music Entertainment
