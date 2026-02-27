@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Loader from "./components/Loader";
 export default function Home() {  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -10,7 +11,7 @@ export default function Home() {  const [loaded, setLoaded] = useState(false);
   }, []);
   return (
     <main className="min-h-screen bg-black text-white">
-      {!loaded && (
+      {!loaded && <Loader />}
   <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
     <div className="text-white/70 text-sm tracking-wide">
       Loading 2Reel…
