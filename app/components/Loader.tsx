@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 
 export default function Loader() {
+  console.log("Loader rendered");
   return (
     <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
       <div className="flex flex-col items-center gap-5">
