@@ -2,7 +2,10 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import StartProjectPanel from "./components/StartProjectPanel";
 export default function Home() {  const [loaded, setLoaded] = useState(false);
+  const [isStartOpen, setIsStartOpen] = useState(false);
+ 
 
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 1200);
@@ -99,6 +102,10 @@ className="text-5xl font-bold"
           </p>
         </div>
       </section>
+      <StartProjectPanel
+  isOpen={isStartOpen}
+  onClose={() => setIsStartOpen(false)}
+/>
     </main>
   );
 }
