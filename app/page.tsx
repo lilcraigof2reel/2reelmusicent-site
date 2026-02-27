@@ -6,17 +6,13 @@ import Loader from "./components/Loader";
 export default function Home() {  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setLoaded(true), 50);
+    const t = setTimeout(() => setLoaded(true), 1200);
     return () => clearTimeout(t);
   }, []);
   return (
     <main className="min-h-screen bg-black text-white">
       {!loaded && <Loader />}
-  <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
-    <div className="text-white/70 text-sm tracking-wide">
-      Loading 2Reel…
-    </div>
-  </div>
+  
 )}
       {/* Top glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
