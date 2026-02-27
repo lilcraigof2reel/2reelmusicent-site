@@ -20,5 +20,6 @@ export default function Home() {  const [loaded, setLoaded] = useState(false);
 
     {/* Rest of homepage */}
     <section>...</section>
-  </main>
+    </main>
 );
+}
