@@ -36,7 +36,7 @@ export default function Home() {  const [loaded, setLoaded] = useState(false);
         srcSet="/images/hero/hero-c-mobile.jpg"
       />
       <img
-        src="/images/hero/hero-main-desktop.jpg"
+        src="/images/hero/hero-main-desktop-v2.jpg"
         alt="2Reel Studio Environment"
         className="w-full h-full object-cover"
       />
