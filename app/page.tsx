@@ -13,10 +13,10 @@ export default function Home() {  const [loaded, setLoaded] = useState(false);
   }, []);
   return (
     <main className="min-h-screen bg-black text-white">
-      {!loaded && (
+    {!loaded && (
   <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
     <div className="text-white/70 text-sm tracking-wide">
-      Loading 2Reel…
+      Loading 2Reel...
     </div>
   </div>
 )}
@@ -26,11 +26,54 @@ export default function Home() {  const [loaded, setLoaded] = useState(false);
         <div className="absolute -bottom-40 right-0 h-72 w-[34rem] rounded-full bg-white/5 blur-3xl" />
       </div>
 
-      <section className="relative mx-auto max-w-6xl px-6 py-20">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <picture>
+      <source
+        media="(max-width: 768px)"
+        srcSet="/images/hero/hero-c-mobile.jpg"
+      />
+      <img
+        src="/images/hero/hero-c-desktop.jpg"
+        alt="2Reel Studio Environment"
+        className="w-full h-full object-cover"
+      />
+    </picture>
+  </div>
+
+  {/* Emerald Gradient Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
+
+  {/* Subtle Emerald Glow */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_centerrgba(16,185,129,0.15),transparent_60%)]" />
+
+  {/* Hero Content */}
+  <div className="relative z-10 text-center px-6 max-w-4xl">
+    <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+      Music. Visuals. Artist Power.
+    </h1>
+
+    <p className="text-zinc-300 text-lg md:text-xl mb-8">
+      2Reel Music Entertainment is a full creative ecosystem for
+      music production, cinematic visuals, and artist development.
+    </p>
+
+    <button
+  onClick={() => setIsStartOpen(true)}
+  className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-zinc-200 transition"
+>
+  Start Your Project
+</button>
+  </div>
+</section>
+
+      <section className="relative py-20">
         <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-zinc-300">
-          <span className="h-2 w-2 rounded-full bg-emerald-400/80" />
-          Booking: Music + Video + Artist Development
-        </div>
+  <span className="h-2 w-2 rounded-full bg-emerald-400/80" />
+  <span>Booking: Music + Video + Artist Development</span>
+</div>
 
         <motion.h1
   initial={{ opacity: 0, y: 40 }}
