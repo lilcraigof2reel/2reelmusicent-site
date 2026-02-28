@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar({ onStartClick }: { onStartClick: () => void }) {
   return (
@@ -8,9 +9,16 @@ export default function Navbar({ onStartClick }: { onStartClick: () => void }) {
       <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
 
         {/* Logo */}
-        <Link href="/" className="text-lg font-semibold tracking-wide">
-          2Reel
-        </Link>
+        <Link href="/" className="flex items-center">
+  <Image
+    src="/images/branding/2reel-logo.png"
+    alt="2Reel Music Entertainment"
+    width={180}
+    height={50}
+    priority
+    className="h-8 w-auto"
+  />
+</Link>
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-300">
